@@ -85,7 +85,6 @@ export default function (argv: ParsedArgs): AjvCore {
     try {
       registerer = require("ts-node").register()
     } catch (err) {
-      /* istanbul ignore next */
       if (err instanceof Error) {
         if ((err as NodeJS.ErrnoException).code === "MODULE_NOT_FOUND") {
           throw new Error(
