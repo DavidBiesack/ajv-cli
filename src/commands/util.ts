@@ -53,9 +53,8 @@ export function openFile(filename: string, suffix: string): any {
       json = require(file)
     }
   } catch (err) {
-
     if (err instanceof Error) {
-      const msg: string = err.message;
+      const msg: string = err.message
       console.error(`error:  ${msg.replace(" module", " " + suffix)}`)
     }
     process.exit(2)
@@ -63,6 +62,7 @@ export function openFile(filename: string, suffix: string): any {
   return json
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function logJSON(mode: string, data: any, ajv?: Ajv): string {
   switch (mode) {
     case "json":
