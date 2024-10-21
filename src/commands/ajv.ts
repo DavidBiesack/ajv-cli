@@ -85,12 +85,10 @@ export default function (argv: ParsedArgs): AjvCore {
     try {
       registerer = require("ts-node").register()
     } catch (err) {
-      if (err instanceof Error) {
-        if ((err as NodeJS.ErrnoException).code === "MODULE_NOT_FOUND") {
-          throw new Error(
-            `'ts-node' is required for the TypeScript configuration files. Make sure it is installed\nError: ${err.message}`
-          )
-        }
+      if (err instanceof Error && "code" in err && err.code === "MODULE_NOT_FOUND") {
+        throw new Error(
+          `'ts-node' is required for the TypeScript configuration files. Make sure it is installed\nError: ${err.message}`
+        )
       }
       throw err
     }

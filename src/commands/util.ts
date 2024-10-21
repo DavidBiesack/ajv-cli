@@ -29,6 +29,7 @@ function getFormatFromFileName(filename: string): string {
 function decodeFile(contents: string, format: string): any {
   switch (format) {
     case "json":
+    case "":
       return JSON.parse(contents)
     case "jsonc":
     case "json5":
